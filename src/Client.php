@@ -463,7 +463,7 @@ class Client
             $scheme,
             $authority,
             $path,
-            build_query($params),
+            http_build_query($params),
             $fragment
         );
         return $uri;
@@ -494,7 +494,7 @@ class Client
             'headers' => $headers,
         ]);
         if (!empty($params) && Method::GET === $method) {
-            $endpoint .= '?' . build_query($params);
+            $endpoint .= '?' . http_build_query($params);
         }
         try {
             $response = $guzzle->request($method, $endpoint, $options);
